@@ -87,6 +87,7 @@ def recommend(name, cosine_):
     
     max_score = cosine_.max()
     result['Score(%)'] = [((score / max_score) * 100).round(2) for _, score in sim_scores]
+    result = result[result['Score(%)'] >= 70]
     
     return result
 
@@ -110,6 +111,7 @@ def recommend_by(data, current_tfid, matrix_):
     
     max_score = current_cosine_.max()
     result['Score(%)'] = [((score / max_score) * 100).round(2) for _, score in sim_scores]
+    result = result[result['Score(%)'] >= 70]
     
     return result
 
@@ -127,12 +129,13 @@ def recommend_by_description(description_text):
     
     max_score = cosine_scores.max()
     result['Score(%)'] = [((score / max_score) * 100).round(2) for _, score in sim_scores]
+    result = result[result['Score(%)'] >= 70]
 
     return result
 
 
 
-# game_to_test = "Dungeonball"
+# game_to_test = "Forza Horizon 5"
 # print(f'Tag dari "{game_to_test}" adalah: {dataset1["Tags"][indices[game_to_test]]}\n\nHasil rekomendasi:')
 # print(recommend(game_to_test, cosine_sim_tag))
 
